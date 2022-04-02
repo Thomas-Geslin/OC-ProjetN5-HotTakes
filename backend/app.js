@@ -1,13 +1,14 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const helmet = require('helmet');
+require('dotenv').config();
 
 const sauceRoutes = require('./routes/sauces');
 const userRoutes = require('./routes/user');
 const path = require('path');
 
 /* Fonction connectant à la BDD de MongoDB */
-mongoose.connect('mongodb+srv://Thomas_Geslin:sIuSUUkQmAHw9Kaq@cluster0.4ry5t.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+mongoose.connect(process.env.MONGODB_URI,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
 .then(() => console.log('Connexion à MongoDB réussie !'))
